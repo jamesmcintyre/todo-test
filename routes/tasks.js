@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 
 
 router.delete('/:taskId', function(req, res, next){
-  Task.deleteTask(req.params.taskId, function(err){
+  Task.deleteTask(req.params.taskId, res, function(err){
     res.status(err ? 400 : 200).send(err || 'Task deleted.');
   });
 });

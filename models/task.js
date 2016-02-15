@@ -36,10 +36,10 @@ taskSchema.statics.addTask = function(addReq, res, cb){
 
 //DELETE TASK
 
-taskSchema.statics.deleteTask = function(taskId, cb){
+taskSchema.statics.deleteTask = function(taskId, res, cb){
   Task.findByIdAndRemove(taskId, function(err){
     if(err) return res.status(400).send(err);
-    return;
+    res.send('task deleted!');
   });
 }
 

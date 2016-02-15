@@ -5,13 +5,14 @@
 <h2>Task List</h2>
 
 <div class="col-md-6">
-  <form class="form-inline">
+  <form name="addTaskForm" class="form-inline">
     <div class="form-group">
       <label for="taskdesc">Task Description</label>
       <input ng-model="task.description" type="text" class="form-control" id="taskdesc" placeholder="i.e. buy eggs and milk!">
     </div>
 
-    <button ng-click="addTask(task)" type="submit" class="btn btn-success">Add Task</button>
+    <button ng-if="editing === false" ng-click="addTask(task)" type="submit" class="btn btn-success">Add Task</button>
+    <button ng-if="editing === true" ng-click="updateTask(task)" type="submit" class="btn btn-warning">Edit Task</button>
   </form>
 </div>
 
@@ -27,14 +28,18 @@
         <tr>
           <th class="desc">Description</th>
           <th class="status">Status</th>
+          <th class="edit">Edit</th>
           <th class="delete">Delete</th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="task in tasksList">
-          <td class="desc">{{ task.description }}</td>
+        <tr ng-repeat="task in tasksList" ng-class="{ active : task.status, completed : task.status}">
+          <td class="desc" ng-click="editTask(task)">{{ task.description }}</td>
           <td class="status">
             <input ng-click='toggleStatus(task)' type="checkbox" {{task.checked}}>
+          </td>
+          <td class="edit">
+            <button ng-click='editTask(task)' class="btn btn-warning">Edit</button>
           </td>
           <td class="delete">
             <button ng-click='removeTask(task)' class="btn btn-danger">Remove</button>
