@@ -21,5 +21,11 @@ app.service('TaskSvc', function($http, $state){
   }
 
 
+  this.removeTask = function(task){
+    var taskId = task._id;
+
+    return $http.delete(`/tasks/${taskId}`)
+  }
+
 
 });

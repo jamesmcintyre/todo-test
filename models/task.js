@@ -50,7 +50,7 @@ taskSchema.statics.update = function (taskObj, cb) {
 
   var taskId = taskObj.params.taskId;
 
-  Item.findById(taskId, function(err, task){
+  Task.findById(taskId, function(err, task){
     if(err) res.status(400).send(err);
     console.log(task);
     task.description = taskObj.body.description;
