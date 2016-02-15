@@ -43,7 +43,7 @@ taskSchema.statics.deleteTask = function(taskId, cb){
 
 taskSchema.statics.update = function (taskObj, cb) {
 
-  Item.findById(taskObj._id, function(err, task){
+  Item.findById(taskId, function(err, task){
     if(err) res.status(400).send(err);
     console.log(task);
     task.ownerId = taskObj.description;

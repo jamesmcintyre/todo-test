@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/css/style.css' />
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/js/bundle.js"></script>
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  <body ng-app="todoList">
+    <div class="container">
+      <div class="jumbotron">
+        <h1>ToDo List</h1>
+        <p>Welcome to ToDo List</p>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <ui-view></ui-view>
+        </div>
+      </div>
+
+    </div>
   </body>
 </html>
