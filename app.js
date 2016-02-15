@@ -5,14 +5,25 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+
+//SETUP MONGOOSE DB CONNECTION
+var mongoose = require('mongoose');
+var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/todotest';
+mongoose.connect(mongoUrl, function(err) {
+  if(err) {
+    console.log('Mongo error:', err);
+  } else {
+    console.log(`MongoDB connected to ${mongoUrl}`);
+  }
+});
+
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -28,8 +39,7 @@ app.use(require('node-sass-middleware')({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+app.use('/', require('./routes/index') );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
