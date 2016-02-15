@@ -3,6 +3,10 @@
 var mongoose = require('mongoose');
 var moment = require('moment');
 
+
+var Task;
+
+
 //TASK SCHEMA
 var taskSchema = mongoose.Schema({
   description: { type: String},
@@ -52,3 +56,8 @@ taskSchema.statics.update = function (taskObj, cb) {
   });
 
 };
+
+
+Task = mongoose.model('Task', taskSchema);
+
+module.exports = Task;

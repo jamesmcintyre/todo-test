@@ -2,7 +2,7 @@
 
 var app = angular.module('todoList');
 
-app.controller('homeCtrl', function($scope, $state) {
+app.controller('homeCtrl', function($scope, $state, TaskSvc) {
   console.log('homeCtrl');
 
   $scope.addTask = function(task){
