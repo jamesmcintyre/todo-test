@@ -31,9 +31,12 @@
       </thead>
       <tbody>
         <tr ng-repeat="task in tasksList">
-          <td class="desc">{{task.description}}</td>
+          <td class="desc">{{ task.description }}</td>
           <td class="status">
-            <input type="checkbox" ng-if>
+            <input ng-click='toggleStatus(task)' type="checkbox">
+          </td>
+          <td class="delete">
+            <button ng-click='removeTask(task)' class="btn btn-danger">Remove</button>
           </td>
         </tr>
       </tbody>

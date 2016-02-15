@@ -8,4 +8,12 @@ app.service('TaskSvc', function($http, $state){
     return $http.post('/tasks/', newTask)
   }
 
+
+  this.getTasks = function(){
+    return $http.get('/tasks/')
+  }
+
+
+
+
 });
