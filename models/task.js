@@ -10,7 +10,8 @@ var Task;
 //TASK SCHEMA
 var taskSchema = mongoose.Schema({
   description: { type: String},
-  status: {type: Boolean}
+  status: {type: Boolean},
+  checked: {type: String}
 });
 
 
@@ -47,11 +48,14 @@ taskSchema.statics.deleteTask = function(taskId, cb){
 
 taskSchema.statics.update = function (taskObj, cb) {
 
+  var taskId = taskObj.params.taskId;
+
   Item.findById(taskId, function(err, task){
     if(err) res.status(400).send(err);
     console.log(task);
-    task.ownerId = taskObj.description;
-    task.requesterId = taskObj.status;
+    task.description = taskObj.body.description;
+    task.status = taskObj.body.status;
+    task.checked = taskObj.body.checked;
     task.save(cb);
   });
 

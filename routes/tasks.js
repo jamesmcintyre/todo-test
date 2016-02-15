@@ -27,7 +27,7 @@ router.delete('/:taskId', function(req, res, next){
 });
 
 router.post('/:taskId', function(req, res, next){
-  Task.update(req.params.taskId, function(err){
+  Task.update(req, function(err){
     res.status(err ? 400 : 200).send(err || 'Task updated.');
   });
 });

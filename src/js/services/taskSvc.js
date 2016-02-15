@@ -14,6 +14,12 @@ app.service('TaskSvc', function($http, $state){
   }
 
 
+  this.updateTask = function(task){
+    var taskId = task._id;
+
+    return $http.post(`/tasks/${taskId}`, task)
+  }
+
 
 
 });

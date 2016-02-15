@@ -25,15 +25,16 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="desc"></th>
-          <th class="status"></th>
+          <th class="desc">Description</th>
+          <th class="status">Status</th>
+          <th class="delete">Delete</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="task in tasksList">
           <td class="desc">{{ task.description }}</td>
           <td class="status">
-            <input ng-click='toggleStatus(task)' type="checkbox">
+            <input ng-click='toggleStatus(task)' type="checkbox" {{task.checked}}>
           </td>
           <td class="delete">
             <button ng-click='removeTask(task)' class="btn btn-danger">Remove</button>

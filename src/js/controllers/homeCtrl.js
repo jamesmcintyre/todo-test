@@ -29,6 +29,36 @@ app.controller('homeCtrl', function($scope, $state, TaskSvc) {
   }
 
 
+  $scope.updateTask = function(task){
+    TaskSvc.updateTask(task)
+    .then(function(res){
+      console.log('update task response: ',res);
+    }, function(err){
+      console.log(err);
+    });
+  }
+
+
+
+  $scope.toggleStatus = function(task){
+    
+    task.status = !task.status;
+
+    if(task.status){
+      task.checked = 'checked';
+    }
+    else{
+      task.checked = '';
+    }
+
+    TaskSvc.updateTask(task)
+    .then(function(res){
+      console.log('toggle task response: ',res);
+    }, function(err){
+      console.log(err);
+    });
+  }
+
 
 
 });
