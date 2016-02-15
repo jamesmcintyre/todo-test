@@ -16,7 +16,7 @@ var taskSchema = mongoose.Schema({
 
 //ADD TASK METHOD
 
-taskSchema.statics.addTask = function(addReq, cb){
+taskSchema.statics.addTask = function(addReq, res, cb){
 
   var reqBody = addReq.body;
 

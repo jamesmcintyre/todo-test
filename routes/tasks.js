@@ -6,7 +6,7 @@ var Task = require('../models/task');
 
 
 router.post('/', function(req, res, next) {
-  Task.addTask(req, function(err, addedTask){
+  Task.addTask(req,res, function(err, addedTask){
     res.status(err ? 400 : 200).send(err || addedTask);
   });
 });

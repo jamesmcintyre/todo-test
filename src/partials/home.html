@@ -1,11 +1,46 @@
-<h1>HOME!!!!!!</h1>
+
+<div class="row">
 
 
-<form class="form-inline">
-  <div class="form-group">
-    <label for="taskdesc">Task Description</label>
-    <input ng-model="task.description" type="text" class="form-control" id="taskdesc" placeholder="i.e. buy eggs and milk!">
+<h2>Task List</h2>
+
+<div class="col-md-6">
+  <form class="form-inline">
+    <div class="form-group">
+      <label for="taskdesc">Task Description</label>
+      <input ng-model="task.description" type="text" class="form-control" id="taskdesc" placeholder="i.e. buy eggs and milk!">
+    </div>
+
+    <button ng-click="addTask(task)" type="submit" class="btn btn-success">Add Task</button>
+  </form>
+</div>
+
+</div>
+
+
+<div class="row">
+
+  <div class="col-sm-12">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="desc"></th>
+          <th class="status"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="task in tasksList">
+          <td class="desc">{{task.description}}</td>
+          <td class="status">
+            <input type="checkbox" ng-if>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
   </div>
 
-  <button ng-click="addTask(task)" type="submit" class="btn btn-success">Add Task</button>
-</form>
+</div>
