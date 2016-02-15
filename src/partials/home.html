@@ -2,26 +2,13 @@
 <div class="row">
 
 
-<h2>Task List</h2>
 
-<div class="col-md-6">
-  <form name="addTaskForm" class="form-inline">
-    <div class="form-group">
-      <label for="taskdesc">Task Description</label>
-      <input ng-model="task.description" type="text" class="form-control" id="taskdesc" placeholder="i.e. buy eggs and milk!">
-    </div>
 
-    <button ng-if="editing === false" ng-click="addTask(task)" type="submit" class="btn btn-success">Add Task</button>
-    <button ng-if="editing === true" ng-click="updateTask(task)" type="submit" class="btn btn-warning">Edit Task</button>
-  </form>
-</div>
-
-</div>
-
+<div class="col-md-12">
 
 <div class="row">
 
-  <div class="col-sm-12">
+  <div class="col-sm-12 col-md-8">
 
     <table class="table">
       <thead>
@@ -39,17 +26,35 @@
             <input ng-click='toggleStatus(task)' type="checkbox" {{task.checked}}>
           </td>
           <td class="edit">
-            <button ng-click='editTask(task)' class="btn btn-warning">Edit</button>
+            <button ng-click='editTask(task)' class="btn btn-xs btn-warning">Edit</button>
           </td>
           <td class="delete">
-            <button ng-click='removeTask(task)' class="btn btn-danger">Remove</button>
+            <button ng-click='removeTask(task)' class="btn btn-xs btn-danger">Remove</button>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
 
+
+  <div class="col-sm-12 col-md-8">
+    <hr>
+    <form name="addTaskForm" class="form-inline">
+      <div class="form-group">
+        <label for="taskdesc">Task Description: </label>
+        <input ng-model="task.description" type="text" class="form-control" id="taskdesc" placeholder="i.e. buy eggs and milk!">
+      </div>
+
+      <button ng-if="editing === false" ng-click="addTask(task)" type="submit" class="btn btn-success">Add Task</button>
+      <button ng-if="editing === true" ng-click="updateTask(task)" type="submit" class="btn btn-warning">Edit Task</button>
+    </form>
+  </div>
+
+
+  <div class="col-sm-12 col-md-4">
+    <h2>Task List</h2>
+    <p>Use this task list to organize your daily life.</p>
+  </div>
 
 
   </div>
-
-</div>
